@@ -40,9 +40,6 @@ module.exports = {
       const hashedPassword = await bcrypt.hash(args.memberInput.password, 12);
 
       const memberData = new Member({
-        username: args.memberInput.username,
-        nickname: args.memberInput.nickname,
-        role: args.memberInput.role,
         email: args.memberInput.email,
         password: hashedPassword
       });
@@ -52,6 +49,9 @@ module.exports = {
       // create profile
 
       const profile = new Profile({
+        username: "",
+        nickname: "",
+        role: "",
         avatar: "",
         status: "",
         memberID: memberResult._id

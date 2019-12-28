@@ -5,9 +5,6 @@ const { buildSchema } = require("graphql");
 const Schema = buildSchema(`
     type Member {
       _id: ID!
-      username: String!
-      nickname: String!
-      role: String!
       email: String!
       password: String
       profileID: Profile!
@@ -15,20 +12,25 @@ const Schema = buildSchema(`
 
     type Profile {
       _id: ID!
+      username: String!
+      nickname: String
+      role: String
       avatar: String
       status: String
       memberID: Member!
+      createdAt: String
+      updatedAt: String
     }
 
     input MemberInput {
-      username: String!
-      nickname: String!
-      role: String!
       email: String!
       password: String
     }
 
     input ProfileInput {
+      username: String
+      nickname: String
+      role: String
       avatar: String
       status: String
     }

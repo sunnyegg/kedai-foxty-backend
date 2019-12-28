@@ -15,10 +15,32 @@ const profileSchema = new Schema({
     type: String,
     required: false
   },
+  username: {
+    type: String,
+    required: false
+  },
+  nickname: {
+    type: String,
+    required: false
+  },
+  role: {
+    type: String,
+    required: false
+  },
   memberID: {
     type: Schema.Types.ObjectId,
     ref: "Member",
     autopopulate: true
+  },
+  createdAt: {
+    type: Date,
+    required: false,
+    default: new Date()
+  },
+  updatedAt: {
+    type: Date,
+    required: false,
+    default: new Date()
   }
 });
 
