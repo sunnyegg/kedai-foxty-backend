@@ -24,14 +24,13 @@ const memberSchema = new Schema({
   },
   password: {
     type: String,
+    select: false,
     required: true
   },
-  profileID: [
-    {
-      type: Schema.Types.ObjectId,
-      ref: "Profile"
-    }
-  ]
+  profileID: {
+    type: Schema.Types.ObjectId,
+    ref: "Profile"
+  }
 });
 
 // create model
