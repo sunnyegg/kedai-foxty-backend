@@ -10,7 +10,6 @@ const memberSchema = new Schema({
   },
   password: {
     type: String,
-    select: false,
     required: true
   },
   profileID: {

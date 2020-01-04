@@ -22,6 +22,12 @@ const Schema = buildSchema(`
       updatedAt: String
     }
 
+    type Login {
+      email: String!
+      token: String!
+      refreshToken: String!
+    }
+
     input MemberInput {
       email: String!
       password: String
@@ -36,6 +42,11 @@ const Schema = buildSchema(`
       status: String!
     }
 
+    input LoginMember {
+      email: String!
+      password: String!
+    }
+
     type RootQuery {
       members: [Member!]!
       profiles: [Profile!]!
@@ -43,7 +54,9 @@ const Schema = buildSchema(`
 
     type RootMutation {
       createMember(memberInput: MemberInput): Member
-      deleteMember(id: String): String
+      deleteMember(id: String!): String
+      searchMember(username: String!): [Profile]
+      loginMember(input: LoginMember): Login
       updateProfile(input: UpdateProfileInput): Profile
     }
 
