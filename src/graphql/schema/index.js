@@ -27,12 +27,13 @@ const Schema = buildSchema(`
       password: String
     }
 
-    input ProfileInput {
-      username: String
-      nickname: String
-      role: String
-      avatar: String
-      status: String
+    input UpdateProfileInput {
+      id: ID!
+      username: String!
+      nickname: String!
+      role: String!
+      avatar: String!
+      status: String!
     }
 
     type RootQuery {
@@ -42,7 +43,8 @@ const Schema = buildSchema(`
 
     type RootMutation {
       createMember(memberInput: MemberInput): Member
-      createProfile(profileInput: ProfileInput): Profile
+      deleteMember(id: String): String
+      updateProfile(input: UpdateProfileInput): Profile
     }
 
     schema {
