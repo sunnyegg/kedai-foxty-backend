@@ -1,9 +1,6 @@
 // import
-const mongoose = require("mongoose");
-const autopopulate = require("mongoose-autopopulate");
-
-// init
-const Schema = mongoose.Schema;
+import { Schema, model } from 'mongoose'
+import autopopulate from 'mongoose-autopopulate'
 
 // create schema
 const profileSchema = new Schema({
@@ -29,7 +26,7 @@ const profileSchema = new Schema({
   },
   memberID: {
     type: Schema.Types.ObjectId,
-    ref: "Member",
+    ref: 'Member',
     autopopulate: true
   },
   createdAt: {
@@ -42,10 +39,12 @@ const profileSchema = new Schema({
     required: false,
     default: new Date()
   }
-});
+})
+
+// autopopulate
+profileSchema.plugin(autopopulate)
 
 // create model
-profileSchema.plugin(autopopulate); // autopopulate
-const model = mongoose.model("Profile", profileSchema);
+const createModel = model('Profile', profileSchema)
 
-module.exports = model;
+export default createModel

@@ -1,5 +1,5 @@
 // import
-const { buildSchema } = require("graphql");
+import { buildSchema } from 'graphql'
 
 // graphql schema
 const Schema = buildSchema(`
@@ -49,6 +49,6 @@ const Schema = buildSchema(`
       query: RootQuery
       mutation: RootMutation
     }
-`);
+`)
 
-module.exports = Schema;
+export default Schema

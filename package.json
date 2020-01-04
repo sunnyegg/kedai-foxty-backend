@@ -4,7 +4,13 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon -r dotenv/config app.js"
+    "start": "node ./src/app.js",
+    "server": "babel-node -r dotenv/config ./src/app.js",
+    "dev": "NODE_ENV=development npm-run-all server",
+    "clean": "rimraf dist",
+    "build": "babel ./src --out-dir dist",
+    "prod": "NODE_ENV=production npm-run-all clean build server:prod",
+    "watch": "nodemon"
   },
   "keywords": [],
   "author": "",
@@ -17,9 +23,22 @@
     "express-graphql": "^0.9.0",
     "graphql": "^14.5.8",
     "mongoose": "^5.8.3",
-    "mongoose-autopopulate": "^0.10.0"
+    "mongoose-autopopulate": "^0.10.0",
+    "morgan": "^1.9.1",
+    "npm-run-all": "^4.1.5",
+    "rimraf": "^3.0.0"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.7",
+    "@babel/core": "^7.7.7",
+    "@babel/node": "^7.7.7",
+    "@babel/preset-env": "^7.7.7",
+    "eslint": "^6.8.0",
+    "eslint-config-standard": "^14.1.0",
+    "eslint-plugin-import": "^2.19.1",
+    "eslint-plugin-node": "^11.0.0",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-standard": "^4.0.1",
     "nodemon": "^2.0.2"
   }
 }
